@@ -1,0 +1,5 @@
+interface:
+  display_name: "Diseño Nutricenter"
+  short_description: "Aplica la identidad visual de Nutricenter"
+  brand_color: "#60B135"
+  default_prompt: "Usa $nutricenter-design para diseñar esta interfaz con la identidad visual de Nutricenter."

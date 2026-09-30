@@ -1,0 +1,21 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isParticipant() { return request.auth != null; }
+    function isAdmin() { return request.auth != null && request.auth.token.admin == true; }
+    function isAccessId(dui) { return dui.matches('[0-9]{8}-[0-9]'); }
+
+    match /participantProfiles/{dui} {
+      allow read: if isParticipant() && isAccessId(dui);
+      allow create, update: if isParticipant() && isAccessId(dui)
+        && request.resource.data.dui == dui
+        && request.resource.data.consent == true;
+      allow delete: if false;
+    }
+
+    match /reedadConfig/{document} {
+      allow read: if isParticipant();
+      allow write: if isAdmin();
+    }
+  }
+}

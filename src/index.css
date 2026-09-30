@@ -1,0 +1,87 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-nc-green: #60b135;
+  --color-nc-green-accessible: #3f7f24;
+  --color-nc-graphite: #353535;
+  --color-nc-heading: #515050;
+  --color-nc-slate: #808891;
+  --color-nc-slate-dark: #585e61;
+  --color-nc-surface-muted: #caccca;
+  --color-nc-white: #ffffff;
+
+  --font-sans: "Roboto", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  :root {
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply min-h-screen bg-white font-sans text-nc-slate-dark;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-nc-green-accessible;
+  }
+}
+
+@layer components {
+  .nc-container {
+    @apply mx-auto w-full max-w-[1200px] px-5 sm:px-[30px];
+  }
+
+  .nc-section {
+    @apply py-10 sm:py-12 lg:py-[60px];
+  }
+
+  .nc-section-heading {
+    @apply font-heading text-2xl font-medium tracking-[0.08em] text-nc-heading uppercase sm:text-[28px] lg:text-[35px];
+  }
+
+  .nc-feature-heading {
+    @apply font-heading text-2xl font-medium text-nc-heading sm:text-[29px];
+  }
+
+  .nc-promo-card {
+    @apply rounded-[25px] bg-nc-surface-muted p-6 text-center sm:p-8;
+  }
+
+  .nc-product-grid {
+    @apply grid grid-cols-1 gap-x-5 gap-y-10 sm:grid-cols-2 lg:grid-cols-4;
+  }
+
+  .nc-product-card {
+    @apply bg-white;
+  }
+
+  .nc-product-name {
+    @apply font-heading text-base leading-[1.2] font-bold text-nc-heading;
+  }
+
+  .nc-product-price {
+    @apply text-xl text-nc-graphite;
+  }
+
+  .nc-button-primary {
+    @apply inline-flex min-h-10 items-center justify-center rounded-full bg-nc-green-accessible px-6 py-2 font-heading text-sm font-semibold text-white transition-colors hover:bg-nc-green focus-visible:outline-nc-green-accessible;
+  }
+
+  .nc-button-secondary {
+    @apply inline-flex min-h-10 items-center justify-center rounded-full border border-nc-graphite bg-transparent px-6 py-2 font-heading text-sm font-semibold text-nc-graphite transition-colors hover:bg-nc-graphite hover:text-white;
+  }
+
+  .nc-search {
+    @apply h-10 rounded border border-nc-surface-muted bg-white px-3 text-sm text-nc-graphite placeholder:text-nc-slate focus:border-nc-green-accessible focus:outline-none;
+  }
+
+  .nc-footer {
+    @apply bg-nc-graphite text-white;
+  }
+}
